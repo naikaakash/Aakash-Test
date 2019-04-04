@@ -1,12 +1,11 @@
 ﻿// HomeProject.cpp : Defines the entry point for the application.
 //
 
-#include "HomeProject.h"
-
-using namespace std;
+#include "HomeProject.hpp"
 
 int main()
 {
-	cout << "Hello CMake." << endl;
-	return 0;
+    std::cout << "Hello CMake." << std::endl;
+    return 0;
 }
+
