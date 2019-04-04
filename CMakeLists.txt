@@ -4,6 +4,8 @@
 cmake_minimum_required (VERSION 3.5)
 
 # Add source to this project's executable.
-add_executable (HomeProject "HomeProject.cpp" "HomeProject.h")
+add_executable (HomeProject
+                HomeProject.cpp
+                HomeProject.hpp)
 
 # TODO: Add tests and install targets if needed.
