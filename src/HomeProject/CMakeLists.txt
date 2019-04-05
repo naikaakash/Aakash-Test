@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #Disable unused variable and unused parameter warnings
-SET(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-variable -Wno-unused-parameter")
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-variable -Wno-unused-parameter")
 
 # Add source to this project's executable.
 add_executable (HomeProject

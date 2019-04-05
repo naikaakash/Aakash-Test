@@ -64,7 +64,7 @@
             </Target>
         </Menu>
         <PreBuildCommands>
-            <Exec CmdLine="cmake -H../src/ -B%op"/>
+            <Exec CmdLine="cmake -H../src/HomeProject -B%op"/>
         </PreBuildCommands>
     </Config>
     <Config
@@ -127,7 +127,7 @@
             </Target>
         </Menu>
         <PreBuildCommands>
-            <Exec CmdLine="cmake -H../src/ -B%op"/>
+            <Exec CmdLine="cmake -H../src/HomeProject -B%op"/>
         </PreBuildCommands>
     </Config>
     <Rules Name="Compile">
@@ -143,13 +143,13 @@
             Name="Source Files"
             Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.scala;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
             GUID="{F4907260-6705-473B-B40B-D52B353BB605}">
-            <F N="../src/HomeProject.cpp"/>
+            <F N="../src/HomeProject/HomeProject.cpp"/>
         </Folder>
         <Folder
             Name="Header Files"
             Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if"
             GUID="{027EEB0F-711A-4175-B1A1-08A63465526F}">
-            <F N="../src/HomeProject.hpp"/>
+            <F N="../src/HomeProject/HomeProject.hpp"/>
         </Folder>
         <Folder
             Name="Resource Files"
@@ -163,8 +163,8 @@
             Name="Other Files"
             Filters=""
             GUID="{4B0FE32B-CBE3-4F77-86F8-721B30EAA85B}">
-            <F N="../src/CMakeLists.txt"/>
-            <F N="../src/README.md"/>
+            <F N="../src/HomeProject/CMakeLists.txt"/>
+            <F N="../src/HomeProject/README.md"/>
         </Folder>
     </Files>
 </Project>
