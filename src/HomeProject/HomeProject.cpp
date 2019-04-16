@@ -8,12 +8,14 @@
 #include <map>
 #include <memory>
 #include <ostream>
+#include <spawn.h>
 #include <sstream>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
 #include <string.h>
+#include <thread>
 #include <vector>
 
 using namespace std;
@@ -305,7 +307,7 @@ void Derived::printVariable()
     std::cerr << "In Derived class, variable=" << VARIABLE_TMP << std::endl;
 }
 
-int main (int argc, char *argv[])
+void testPrintVariable()
 {
     Base b;
     Derived d;
@@ -317,6 +319,69 @@ int main (int argc, char *argv[])
     d.printVariable();
     pb->printVariable();
     pd->printVariable();
+}
+
+void testFuncPtra(int a)
+{
+    std::cerr << "Printing a=" << a << "\n\n";
+}
+
+void testFuncPtrb(int a, int b)
+{
+    std::cerr << "Printing a=" << a << " and b=" << b << "\n\n";
+}
+
+void useStdFunctionforFucnPtr()
+{
+    int a = 0;
+    int b = 1;
+
+    using std::placeholders::_1;
+    std::function<void(int)> funca, funcb;
+
+    funca = std::bind(testFuncPtra, a);
+    funcb = std::bind(testFuncPtrb, a, _1);
+
+    //std::cerr << "\nLoading funca without argument\n" << std::endl;
+    //funca();
+    std::cerr << "\nLoading funca with 1 argument\n" << std::endl;
+    funca(b);
+    std::cerr << "\nLoading funcb with 1 argument\n" << std::endl;
+    funcb(b);
+    //std::cerr << "Loading funcb without argument\n" << std::endl;
+    //funcb();
+}
+
+int main (int argc, char *argv[])
+{
+    std::cerr << "Started\n";
+    std::string processName = "/bonus/scratch/aanaik/Aakash-Test/slickedit-proj-files/Debug/smallApp/smallApp";
+
+    std::string _featureSet = "0";
+    _featureSet = std::to_string(3);
+
+    std::string op1 = "-f";
+
+    const char* args[] =
+    {
+        processName.c_str(),
+        op1.c_str(),
+        _featureSet.c_str(),
+        nullptr
+    };
+
+    pid_t pid = 0;
+
+    const int rc = posix_spawnp(&pid,
+                                processName.c_str(),
+                                nullptr,
+                                nullptr,
+                                const_cast<char**>(args),
+                                nullptr);
+    if (rc)
+    {
+        std::cerr << processName << " posix_spawnp failed, rc=" << rc << "\n";
+    }
 
     return 0;
 }

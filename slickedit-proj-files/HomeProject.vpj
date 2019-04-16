@@ -34,7 +34,15 @@
                 CaptureOutputWith="ProcessBuffer"
                 SaveOption="SaveWorkspaceFiles"
                 RunFromDir="%rw">
-                <Exec CmdLine="make -C %op"/>
+                <Exec CmdLine="make -C %opHomeProject/"/>
+            </Target>
+            <Target
+                Name="Build2"
+                MenuCaption="B&amp;uild2"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="make -C %opsmallApp/"/>
             </Target>
             <Target
                 Name="Rebuild"
@@ -60,11 +68,12 @@
                 BuildFirst="1"
                 CaptureOutputWith="ProcessBuffer"
                 RunFromDir="%rw">
-                <Exec CmdLine='"%o"'/>
+                <Exec CmdLine='"%op/HomeProject/%o"'/>
             </Target>
         </Menu>
         <PreBuildCommands>
-            <Exec CmdLine="cmake -H../src/HomeProject -B%op"/>
+            <Exec CmdLine="cmake -H../src/smallApp -B%opsmallApp"/>
+            <Exec CmdLine="cmake -H../src/HomeProject -B%opHomeProject"/>
         </PreBuildCommands>
     </Config>
     <Config
@@ -97,7 +106,15 @@
                 CaptureOutputWith="ProcessBuffer"
                 SaveOption="SaveWorkspaceFiles"
                 RunFromDir="%rw">
-                <Exec CmdLine="make -C %op"/>
+                <Exec CmdLine="make -C %opHomeProject/"/>
+            </Target>
+            <Target
+                Name="Build2"
+                MenuCaption="B&amp;uild2"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="make -C %opsmallApp/"/>
             </Target>
             <Target
                 Name="Rebuild"
@@ -123,11 +140,12 @@
                 BuildFirst="1"
                 CaptureOutputWith="ProcessBuffer"
                 RunFromDir="%rw">
-                <Exec CmdLine='"%o"'/>
+                <Exec CmdLine='"%op/HomeProject/%o"'/>
             </Target>
         </Menu>
         <PreBuildCommands>
-            <Exec CmdLine="cmake -H../src/HomeProject -B%op"/>
+            <Exec CmdLine="cmake -H../src/smallApp -B%opsmallApp"/>
+            <Exec CmdLine="cmake -H../src/HomeProject -B%opHomeProject"/>
         </PreBuildCommands>
     </Config>
     <Rules Name="Compile">
@@ -144,6 +162,7 @@
             Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.scala;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
             GUID="{F4907260-6705-473B-B40B-D52B353BB605}">
             <F N="../src/HomeProject/HomeProject.cpp"/>
+            <F N="../src/smallApp/smallApp.cpp"/>
         </Folder>
         <Folder
             Name="Header Files"
@@ -164,6 +183,7 @@
             Filters=""
             GUID="{4B0FE32B-CBE3-4F77-86F8-721B30EAA85B}">
             <F N="../src/HomeProject/CMakeLists.txt"/>
+            <F N="../src/smallApp/CMakeLists.txt"/>
             <F N="../src/HomeProject/README.md"/>
         </Folder>
     </Files>
