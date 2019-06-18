@@ -352,7 +352,7 @@ void useStdFunctionforFucnPtr()
     //funcb();
 }
 
-int main (int argc, char *argv[])
+void startSmallApp()
 {
     std::cerr << "Started\n";
     std::string processName = "/bonus/scratch/aanaik/Aakash-Test/slickedit-proj-files/Debug/smallApp/smallApp";
@@ -382,6 +382,25 @@ int main (int argc, char *argv[])
     {
         std::cerr << processName << " posix_spawnp failed, rc=" << rc << "\n";
     }
+}
+
+void writeBinary()
+{
+    std::ofstream fout;
+    fout.open("/users/aanaik/Downloads/test.bin", ios::binary | ios::out);
+
+    std::vector<uint8_t> test
+    {
+        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    };
+
+    fout.write(reinterpret_cast<const char *>(&test[0]), test.size());
+    fout.close();
+}
+
+int main (int argc, char *argv[])
+{
+    writeBinary();
 
     return 0;
 }
