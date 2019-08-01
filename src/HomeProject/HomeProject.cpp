@@ -398,10 +398,45 @@ void writeBinary()
     fout.close();
 }
 
+void vectorAssignInsert()
+{
+    std::vector<uint8_t> v1(100, 1);
+    std::vector<uint8_t> v2(5, 2);
+
+//    v1.insert(v1.begin() + 22, v2.begin(), v2.end());
+//    std::copy(v2.begin(), v2.end(), v1.begin() + 99);
+
+    v1.assign(v2.begin(), v2.end());
+    std::cerr << "size  of v1 is " << v1.size() << std::endl;
+
+    for (const auto &v : v1 )
+    {
+        std::cerr << "Value of v1 is " << +v << std::endl;
+    }
+
+
+    v1.insert(v1.begin() + 22, v2.begin(), v2.end());
+}
+
 int main (int argc, char *argv[])
 {
-    writeBinary();
+  std::string pfid3("0x23c3");
+  pfid3.erase(0, 2);
 
-    return 0;
+  unsigned int        platformId, platformId2;
+  std::stringstream   ssPfid, ssPfid2;
+
+
+  ssPfid << std::hex << pfid3;
+  ssPfid2 << pfid3;
+
+  std::cerr << "ssPfid :" << ssPfid.str() << std::endl;
+  std::cerr << "ssPfid2:" << ssPfid2.str() << std::endl;
+
+  ssPfid >> platformId;
+  ssPfid2 >> platformId2;
+
+  std::cerr << "platform  Id=" << std::hex << platformId << std::endl;
+  std::cerr << "platform Id2=" << std::hex << platformId2 << std::endl;
 }
 
