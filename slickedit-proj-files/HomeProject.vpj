@@ -29,28 +29,28 @@
                 <Exec CmdLine='cc -g -o "%o" %f %libs'/>
             </Target>
             <Target
-                Name="Build"
-                MenuCaption="&amp;Build"
+                Name="Build Home Project"
+                MenuCaption="Build &amp;home Project"
                 CaptureOutputWith="ProcessBuffer"
                 SaveOption="SaveWorkspaceFiles"
                 RunFromDir="%rw">
-                <Exec CmdLine="make -C %opHomeProject/"/>
+                <Exec CmdLine="make -C %opHomeProject/ "/>
             </Target>
             <Target
-                Name="Build2"
-                MenuCaption="B&amp;uild2"
+                Name="Build Small App"
+                MenuCaption="Build &amp;small App"
                 CaptureOutputWith="ProcessBuffer"
                 SaveOption="SaveWorkspaceFiles"
                 RunFromDir="%rw">
                 <Exec CmdLine="make -C %opsmallApp/"/>
             </Target>
             <Target
-                Name="Rebuild"
-                MenuCaption="&amp;Rebuild"
+                Name="Build cproject"
+                MenuCaption="Build &amp;cproject"
                 CaptureOutputWith="ProcessBuffer"
-                SaveOption="SaveWorkspaceFiles"
+                SaveOption="SaveNone"
                 RunFromDir="%rw">
-                <Exec CmdLine="make -C %op"/>
+                <Exec CmdLine="make -C %opHomeProject/cproject/"/>
             </Target>
             <Target
                 Name="Debug"
@@ -62,13 +62,28 @@
                 <Exec CmdLine=""/>
             </Target>
             <Target
-                Name="Execute"
-                MenuCaption="E&amp;xecute"
-                SaveOption="SaveNone"
-                BuildFirst="1"
+                Name="Execute HomeProject"
                 CaptureOutputWith="ProcessBuffer"
-                RunFromDir="%rw">
+                SaveOption="SaveNone"
+                RunFromDir="%rw"
+                MenuCaption="Execute &amp;HomeProject">
                 <Exec CmdLine='"%op/HomeProject/%o"'/>
+            </Target>
+            <Target
+                Name="Execute smallApp"
+                MenuCaption="Execute &amp;SmallApp"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%op/smallApp/smallApp"'/>
+            </Target>
+            <Target
+                Name="Execute cproject"
+                MenuCaption="Execute &amp;Cproject"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine='make -C %opHomeProject/cproject/ &gt; /dev/null  &amp;&amp; "%op/HomeProject/cproject/cproject"'/>
             </Target>
         </Menu>
         <PreBuildCommands>
@@ -142,6 +157,48 @@
                 RunFromDir="%rw">
                 <Exec CmdLine='"%op/HomeProject/%o"'/>
             </Target>
+            <Target
+                Name="Build cproject"
+                MenuCaption="Build cproject"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone">
+                <Exec CmdLine="cproject"/>
+            </Target>
+            <Target
+                Name="Build Home Project"
+                MenuCaption="Build Home Project"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone">
+                <Exec CmdLine="%opHomeProject"/>
+            </Target>
+            <Target
+                Name="Build Small App"
+                MenuCaption="Build Small App"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone">
+                <Exec CmdLine=""/>
+            </Target>
+            <Target
+                Name="Execute smallApp"
+                MenuCaption="Execute smallApp"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone">
+                <Exec CmdLine=""/>
+            </Target>
+            <Target
+                Name="Execute cproject"
+                MenuCaption="Execute cproject"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone">
+                <Exec CmdLine=""/>
+            </Target>
+            <Target
+                Name="Execute HomeProject"
+                MenuCaption="Execute HomeProject"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone">
+                <Exec CmdLine=""/>
+            </Target>
         </Menu>
         <PreBuildCommands>
             <Exec CmdLine="cmake -H../src/smallApp -B%opsmallApp"/>
@@ -161,6 +218,7 @@
             Name="Source Files"
             Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.scala;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
             GUID="{F4907260-6705-473B-B40B-D52B353BB605}">
+            <F N="../src/HomeProject/cproject/cproject.c"/>
             <F N="../src/HomeProject/HomeProject.cpp"/>
             <F N="../src/smallApp/smallApp.cpp"/>
         </Folder>
@@ -183,6 +241,7 @@
             Filters=""
             GUID="{4B0FE32B-CBE3-4F77-86F8-721B30EAA85B}">
             <F N="../src/HomeProject/CMakeLists.txt"/>
+            <F N="../src/HomeProject/cproject/CMakeLists.txt"/>
             <F N="../src/smallApp/CMakeLists.txt"/>
             <F N="../src/HomeProject/README.md"/>
         </Folder>

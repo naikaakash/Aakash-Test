@@ -17,6 +17,8 @@
 #include <string.h>
 #include <thread>
 #include <vector>
+#include <map>
+#include <mutex>
 
 using namespace std;
 
@@ -418,7 +420,7 @@ void vectorAssignInsert()
     v1.insert(v1.begin() + 22, v2.begin(), v2.end());
 }
 
-int main (int argc, char *argv[])
+void stringStreamPlay ()
 {
   std::string pfid3("0x23c3");
   pfid3.erase(0, 2);
@@ -438,5 +440,9 @@ int main (int argc, char *argv[])
 
   std::cerr << "platform  Id=" << std::hex << platformId << std::endl;
   std::cerr << "platform Id2=" << std::hex << platformId2 << std::endl;
+}
+
+int main(int argc, char *argv[])
+{
 }
 

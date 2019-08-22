@@ -4,19 +4,14 @@
 cmake_minimum_required (VERSION 3.5)
 
 add_compile_options(-Wall -Wextra -Werror)
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
 #Disable unused variable and unused parameter warnings
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-variable -Wno-unused-parameter")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-variable -Wno-unused-parameter")
 
 # Add source to this project's executable.
-add_executable (HomeProject
-                HomeProject.cpp
-                HomeProject.hpp)
+add_executable (cproject
+                cproject.c)
 
 #target_compile_options(HomeProject PRIVATE -Wdunused-parameter)
-
-# TODO: Add tests and install targets if needed.
-
-add_subdirectory (cproject)
